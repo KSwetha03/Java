@@ -1,0 +1,60 @@
+package Learn;
+class Vehicles {
+    String licensePlate;
+    String owner;
+
+    public Vehicles(String licensePlate, String owner) {
+        this.licensePlate = licensePlate;
+        this.owner = owner;
+    }
+}
+
+class Car extends Vehicles {
+    int numberOfSeats;
+
+    public Car(String licensePlate, String owner, int numberOfSeats) {
+        super(licensePlate, owner);
+        this.numberOfSeats = numberOfSeats;
+    }
+}
+
+class Truck extends Vehicles {
+    double maxLoadCapacity;
+
+    public Truck(String licensePlate, String owner, double maxLoadCapacity) {
+        super(licensePlate, owner);
+        this.maxLoadCapacity = maxLoadCapacity;
+    }
+}
+
+class Motorcycle extends Vehicles {
+    boolean hasSideCar;
+
+    public Motorcycle(String licensePlate, String owner, boolean hasSideCar) {
+        super(licensePlate, owner);
+        this.hasSideCar = hasSideCar;
+    }
+}
+
+public class Vehicle {
+    public static void main(String[] args) {
+        Car car = new Car("ABC123", "Priya", 4);
+        Truck truck = new Truck("XYZ789", "Rohan", 5000.0);
+        Motorcycle motorcycle = new Motorcycle("DEF456", "Senthil", true);
+
+        System.out.println("Car:");
+        System.out.println("License Plate: " + car.licensePlate);
+        System.out.println("Owner: " + car.owner);
+        System.out.println("Number of Seats: " + car.numberOfSeats);
+
+        System.out.println("\nTruck:");
+        System.out.println("License Plate: " + truck.licensePlate);
+        System.out.println("Owner: " + truck.owner);
+        System.out.println("Max Load Capacity: " + truck.maxLoadCapacity);
+
+        System.out.println("\nMotorcycle:");
+        System.out.println("License Plate: " + motorcycle.licensePlate);
+        System.out.println("Owner: " + motorcycle.owner);
+        System.out.println("Has Side Car: " + motorcycle.hasSideCar);
+    }
+}
