@@ -1,0 +1,73 @@
+package Learn;
+
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private int registerNumber;
+    private int numCourses;
+    private String[] courseNames;
+    private String[] courseCodes;
+    private int[] marks;
+
+    public Student(String name, int registerNumber, int numCourses) {
+        this.name = name;
+        this.registerNumber = registerNumber;
+        this.numCourses = numCourses;
+        this.courseNames = new String[numCourses];
+        this.courseCodes = new String[numCourses];
+        this.marks = new int[numCourses];
+    }
+
+    public void inputCourses(Scanner scanner) {
+        for (int i = 0; i < numCourses; i++) {
+            System.out.println("Enter details for Course " + (i + 1) + ":");
+            System.out.print("Course Name: ");
+            courseNames[i] = scanner.next();
+            System.out.print("Course Code: ");
+            courseCodes[i] = scanner.next();
+            System.out.print("Marks Obtained: ");
+            marks[i] = scanner.nextInt();
+        }
+    }
+
+    public void printGradeSheet() {
+        System.out.println("\nGrade Sheet for Student: " + name);
+        System.out.println("Register Number: " + registerNumber);
+        System.out.println("Course Code\tCourse Name\tGrade");
+        for (int i = 0; i < numCourses; i++) {
+            char grade = calculateGrade(marks[i]);
+            System.out.println(courseCodes[i] + "\t\t" + courseNames[i] + "\t\t" + grade);
+        }
+    }
+
+    private char calculateGrade(int mark) {
+        if (mark >= 90) return 'A';
+        else if (mark >= 80) return 'B';
+        else if (mark >= 70) return 'C';
+        
+        else if (mark >= 60) return 'D';
+        else return 'F';
+    }
+}
+
+public class GradeSheet{
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Student Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Register Number: ");
+        int registerNumber = scanner.nextInt();
+        System.out.print("Enter Number of Courses: ");
+        int numCourses = scanner.nextInt();
+
+        Student student = new Student(name, registerNumber, numCourses);
+        student.inputCourses(scanner);
+        student.printGradeSheet();
+
+        scanner.close();
+    }
+}
+
